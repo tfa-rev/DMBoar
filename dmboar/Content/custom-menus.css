@@ -1,0 +1,165 @@
+﻿body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #acb7ae;
+}
+
+h, h1, h2, h3, h4, h5, h6 {
+    margin: 5px;
+    font-size: 2rem;
+    
+}
+
+ 
+
+ 
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.log-item {
+    margin: 5px;
+}
+
+.menu-container {
+    width: 400px;
+    height: auto;
+    margin: auto;
+    border-radius: 6px;
+    background-color: #DCDCDC;
+    padding:10px;
+}
+
+.col {
+    float: left;
+    width:50%;
+}
+
+.right-element{
+    float:right;
+}
+
+.center-el{
+    width:90px;
+    margin:auto;
+}
+
+.center-toast {
+    width: 300px;
+    height: 10px;
+    margin: auto;
+    color: red;
+}
+
+.div-container {
+    background-color: whitesmoke;
+    border-radius: 6px;
+}
+
+.button-el{
+    border:1px blue;
+    background-color:white;
+}
+
+.user-container {
+   
+    border-radius: 6px;
+    background-color: #DCDCDC;
+    padding: 10px;
+    float: left;     
+    height:100%;
+    margin:10px;
+    border: 4px thin brown;
+}
+
+    .user-container:hover {
+        background-color: ghostwhite;
+    }
+
+#user-actions {
+    width:15%;
+}
+
+#user-console {
+    min-width: 55%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#user-editor {
+    width: 25%;
+    
+}
+
+
+.user-board {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+
+}
+
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-content: space-around;
+}
+
+    .actions > button {
+        background-color: wheat;
+        width: 100%;
+        margin: 1%;
+        text-align: center;
+        line-height: 75px;
+        font-size: 30px;
+    }
+
+table, th, td {
+    border: 3px solid grey;
+    margin: auto;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    height: 60%;
+    border-radius: 23px;
+    box-shadow: 10px 10px 5px grey;
+    background-color: #82716e;
+}
+ 
+
+.center-div{
+    margin:10px;
+    align-self:center;
+    height:auto;
+}
+
+.element-positioner {
+    display: flex;
+    flex-direction: column;     
+    align-content: space-around;
+}
+ 
+ 
+
+ 
+
+

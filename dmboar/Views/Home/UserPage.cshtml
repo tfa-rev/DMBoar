@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "UserPage";
+    Layout = null;
+}
+
+<h2 >UserPage</h2>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+    <link href="~/Content/custom-menus.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/GetData.js"></script>
+</head>
+<body>
+   
+
+    <div class="user-board">
+        <div id="user-actions" class="user-container actions ">
+            <button id="btn-devices-view"> View Devices </button>
+            <button id="btn-users-view"> View Users </button>
+            <button id="btn-users-mod"> Add Users </button>
+        </div>
+        <div id="user-console" class="user-container center  ">
+
+        </div>
+        <div id="user-editor" class="user-container right">
+
+        </div>
+
+        <input hidden id='id' value="@ViewBag.user_id" />
+
+       
+    </div>
+</body>
+</html>
