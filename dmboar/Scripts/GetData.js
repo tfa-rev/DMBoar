@@ -65,17 +65,7 @@ $(document).ready(function () {
     });
 });  
 
-$(document).ready(function () {
-   
-    $('#btnGoToLogin').click(function () {     
-        
-           
-        $("#screen").load('Home/Login');       
-
-       
-    });
-});  
-
+ 
 $(document).ready(function () {
 
     $('#btn-users-mod').click(function () {     
