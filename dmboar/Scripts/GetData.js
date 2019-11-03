@@ -117,7 +117,7 @@ $(document).ready(function () {
         
 
         var apiBaseUrl = "http://localhost:55326/";
-        $("#toast-index").text($("#l-mail").val().trim());
+        
         var data = {
             mail: $("#l-mail").val().trim(),
             password: $("#l-password").val().trim(),
@@ -134,7 +134,7 @@ $(document).ready(function () {
                     location = data.url;
                 });
                 //window.location.href = apiBaseUrl + 'Home/UserPage/';
-               
+                $("#toast-index").text('Logging in as' +$("#l-mail").val().trim());
                 
             },
             error: function (req, status, errorObj) {
@@ -147,8 +147,27 @@ $(document).ready(function () {
     });
 });  
 
+$(document).ready(function () {
+
+    var apiBaseUrl = "http://localhost:55326/";
+  
+
+    $('#btn-users-mod').click(function () {
+
+       
+        
+        $.get(apiBaseUrl +  "Home/Register/", {}, function (response) {
+            $("#user-editor").html(response);
+           
+
+        });
+        
+    });
 
  
+
+
+});  
 
  
 

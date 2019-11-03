@@ -52,7 +52,7 @@ namespace dmboar.Controllers
 
 
             ViewBag.Title = "Register";
-            return View();
+            return PartialView("~/Views/Home/Register.cshtml");
 
         }
 
