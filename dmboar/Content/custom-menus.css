@@ -107,21 +107,47 @@ p {
         line-height: 75px;
         font-size: 30px;
     }
-
-table ,th {
+ /*table layout*/
+table {
     border: 3px solid #496e50;
+    border-collapse:collapse;
     border-radius: 3px;
     text-align: center;
-    margin: auto;
+    margin-left: 5%;
+    border-style: hidden;
 }
 
-  td {
+  td, th  {
     border: 3px solid grey;
 }
     td:hover {
         border: 4px solid black;
     }
 
+    tr:hover{
+        background-color:blanchedalmond;
+    }
+
+ 
+
+ /* table editor*/
+.table-edit {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-del {
+    width: 100%;
+    margin: auto;
+    height:100%; 
+    text-align:center;
+    display:none;
+   
+}
+
+.user-row{
+
+}
 /* index login */
 
 .stack {

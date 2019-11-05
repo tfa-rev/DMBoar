@@ -45,7 +45,7 @@ $(document).ready(function () {
                 var $header = $('<thead/>').html('<tr><th>First Name</th><th>Last Name</th><th>Role</th><th>Location</th><th>Username</th><th>Assigned Devices</th><th>Passwrod</th><th>Date</th></tr>');
                 $table.append($header);
                 $.each(data, function (i, val) {
-                    var $row = $('<tr/>');
+                    var $row = $('<tr id="row_' + val.username + '"/>').addClass('user-row');
                     $row.append($('<td/>').html(val.first_name));
                     $row.append($('<td/>').html(val.last_name));
                     $row.append($('<td/>').html(val.role));
@@ -54,9 +54,17 @@ $(document).ready(function () {
                     $row.append($('<td/>').html('Unassigned'));
                     $row.append($('<td/>').html(val.password));
                     $row.append($('<td/>').html('Unassigned'));
+                    $row.append($('<button/>').addClass('button-del edit-user').attr('id', val.mail).html('&#10004'));
+                    $row.append($('<button/>').addClass('button-del delete-user').html('X'));
                     $table.append($row);
+
+                    
                 });
+
+               
+
                 $('#user-console').html($table);
+                
             },
             error: function () {
                 alert('Error!');
@@ -197,4 +205,24 @@ $(document).ready(function () {
 
         });
     }, 0);
+});
+
+
+ 
+$(document).on({
+    mouseenter: function () {
+        $(this).find('button').show();
+    },
+    mouseleave: function () {
+        $(this).find('button').hide();
+    }
+}, ".user-row"); 
+
+
+$(document).ready(function () {
+    $('.user-del').click(function () {
+
+        var $i = $(this).closest('tr').attr('data-uid');
+       
+    });
 });

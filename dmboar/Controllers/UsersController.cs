@@ -180,5 +180,23 @@ namespace dmboar.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Delete(string username)
+        {
+            if (username != null)
+                return BadRequest("Not a valid student id");
+
+            using (DMSEntities dbContext = new DMSEntities())
+            {
+                var student = dbContext.users
+                    .Where(s => s.Username == username)
+                    .FirstOrDefault();
+
+                dbContext.Entry(student).State = System.Data.Entity.EntityState.Deleted;
+                dbContext.SaveChanges();
+            }
+
+            return Ok();
+        }
     }
 }
