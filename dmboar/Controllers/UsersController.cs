@@ -181,9 +181,11 @@ namespace dmboar.Controllers
             return Ok();
         }
 
+        [Route("api/Users/Delete")]
+        [HttpDelete]
         public IHttpActionResult Delete(string username)
         {
-            if (username != null)
+            if (username == null)
                 return BadRequest("Not a valid student id");
 
             using (DMSEntities dbContext = new DMSEntities())

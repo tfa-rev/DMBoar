@@ -54,8 +54,8 @@ $(document).ready(function () {
                     $row.append($('<td/>').html('Unassigned'));
                     $row.append($('<td/>').html(val.password));
                     $row.append($('<td/>').html('Unassigned'));
-                    $row.append($('<button/>').addClass('button-del edit-user').attr('id', val.mail).html('&#10004'));
-                    $row.append($('<button/>').addClass('button-del delete-user').html('X'));
+                    $row.append($('<button/>').addClass('button-del edit-user').attr('id', 'editB' + val.username).html('Edit'));
+                    $row.append($('<button/>').addClass('button-del  delete-user').attr('id', 'deleteB' + val.username).html('Delete'));
                     $table.append($row);
 
                     
@@ -217,12 +217,29 @@ $(document).on({
         $(this).find('button').hide();
     }
 }, ".user-row"); 
+ 
+ 
 
 
-$(document).ready(function () {
-    $('.user-del').click(function () {
+ 
+$(document).on("click", ".delete-user", function () {
+    var tmp = $(this).attr('id');
+    var username = tmp.replace('deleteB', '');
 
-        var $i = $(this).closest('tr').attr('data-uid');
-       
+    var apiBaseUrl = "http://localhost:55326/";
+    $('#user-editor').html(username);
+
+    $.ajax({
+        url: apiBaseUrl + 'api/Users/Delete?'+ $.param({ "username": username }),
+        type: 'DELETE',    
+        success: function (data) {
+            
+            $("#btn-users-view").click(); 
+          
+        },
+        error: function (req, status, errorObj) {
+
+        }
+
     });
 });
