@@ -152,6 +152,9 @@ table {
 .delete-user{
 
 }
+
+.edit-user {
+}
 /* index login */
 
 .stack {
@@ -221,5 +224,6 @@ table {
     height:4%;
     box-shadow: 1px 1px grey;
     background-color: #acb7ae;
+     
 }
 

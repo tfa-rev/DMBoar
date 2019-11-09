@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     var apiBaseUrl = "http://localhost:55326/";
     $('#btn-devices-view').click(function () {
+        $("#user-console").show();
 
         $.ajax({
             url: apiBaseUrl + 'api/Devices',
@@ -36,6 +37,7 @@ $(document).ready(function () {
     var apiBaseUrl = "http://localhost:55326/";
     $('#btn-users-view').click(function () {
 
+        $("#user-console").show();
         $.ajax({
             url: apiBaseUrl + 'api/Users',
             type: 'GET',
@@ -74,14 +76,8 @@ $(document).ready(function () {
 });  
 
  
-$(document).ready(function () {
+ 
 
-    $('#btn-users-mod').click(function () {     
-
-        $("#user-editor").load('Home/Register');    
-
-    });
-});  
 
 $(document).ready(function () {
 
@@ -95,7 +91,7 @@ $(document).ready(function () {
             user_id: $("#r-id").val().trim(),
             first_name: $("#r-fname").val().trim(),
             last_name: $("#r-lname").val().trim(),
-            role: $("#r-role").val().trim().trim(),
+            role: $("#r-role").val().trim(),
             location: $("#r-location").val().trim(),
             username: $("#r-uname").val().trim(),
             mail: $("#r-mail").val().trim(),
@@ -227,14 +223,15 @@ $(document).on("click", ".delete-user", function () {
     var username = tmp.replace('deleteB', '');
 
     var apiBaseUrl = "http://localhost:55326/";
-    $('#user-editor').html(username);
+    
 
     $.ajax({
         url: apiBaseUrl + 'api/Users/Delete?'+ $.param({ "username": username }),
         type: 'DELETE',    
         success: function (data) {
             
-            $("#btn-users-view").click(); 
+            $("#btn-users-view").click();
+            
           
         },
         error: function (req, status, errorObj) {
@@ -243,3 +240,87 @@ $(document).on("click", ".delete-user", function () {
 
     });
 });
+
+ 
+
+ 
+$(document).on({
+    click: function () {
+
+
+       
+
+        var apiBaseUrl = "http://localhost:55326/";
+
+
+        $.ajax({
+            url: apiBaseUrl + 'Home/Register',
+            type: 'GET',
+            success: function (data) {
+
+                $("#user-console").html('');
+                $("#user-editor").html(data);
+              
+                $('#btn-register').show();
+                $('#btn-update').hide();
+ 
+
+            },
+            error: function (req, status, errorObj) {
+
+            }
+
+        });
+
+
+    },
+
+}, "#btn-users-mod"); 
+
+$(document).on({
+    click: function () {
+
+
+        var tmp = $(this).attr('id');
+        var username = tmp.replace('editB', '');
+        var tr_id = 'row_' + username;
+
+        var $row = $(this).closest("tr");
+        var $tds = $row.find("td"); 
+
+        var apiBaseUrl = "http://localhost:55326/";
+
+
+        $.ajax({
+            url: apiBaseUrl + 'Home/Register',
+            type: 'GET',
+            success: function (data) {
+
+               
+                $("#user-editor").html(data);
+                $('#btn-register').hide();
+                $('#btn-update').show();
+
+               
+               
+
+                $("#r-id").val(1);
+                $("#r-fname").val($tds.eq(0).text());
+                $("#r-lname").val($tds.eq(1).text());
+                $("#r-role").val($tds.eq(2).text());
+                $("#r-location").val($tds.eq(3).text());
+                $("#r-uname").val($tds.eq(4).text());
+                $("#r-mail").val($tds.eq(7).text());
+                $("#r-password").val($tds.eq(6).text());
+
+            },
+            error: function (req, status, errorObj) {
+
+            }
+
+        });
+  
+     
+    },
+   
+}, ".edit-user"); 
