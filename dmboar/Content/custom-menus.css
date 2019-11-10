@@ -6,7 +6,7 @@
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #acb7ae;
+    background-color: #8D8741;
 }
 
 h, h1, h2, h3, h4, h5, h6 {
@@ -51,18 +51,17 @@ p {
 }
 
 .user-container {
-   
     border-radius: 6px;
-    background-color: #DCDCDC;
+    background-color: #f5ebc6;
     padding: 10px;
-    float: left;     
-    height:100%;
-    margin:10px;
+    float: left;
+    height: 100%;
+    margin: 10px;
     border: 4px thin brown;
 }
 
     .user-container:hover {
-        background-color: ghostwhite;
+        background-color: #f8e291;
     }
 
 #user-actions {
@@ -124,9 +123,9 @@ table {
         border: 4px solid black;
     }
 
-    tr:hover{
-        background-color:blanchedalmond;
-    }
+tr:hover {
+    background-color: #dfd3aa;
+}
 
  
 

@@ -21,7 +21,7 @@
                     $row.append($('<td/>').html(val.OS_version));
                     $row.append($('<td/>').html(val.CPU));
                     $row.append($('<td/>').html(val.RAM));
-                    $row.append($('<td/>').html('Unassigned'));
+                    $row.append($('<td/>').html('Unassigned'));                   
                     $table.append($row);
                 });
                 $('#user-console').html($table);
@@ -44,7 +44,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 var $table = $('<table/>').addClass('dataTable table table-bordered table-striped');
-                var $header = $('<thead/>').html('<tr><th>First Name</th><th>Last Name</th><th>Role</th><th>Location</th><th>Username</th><th>Assigned Devices</th><th>Passwrod</th><th>Date</th></tr>');
+                var $header = $('<thead/>').html('<tr><th>First Name</th><th>Last Name</th><th>Role</th><th>Location</th><th>Username</th><th>Assigned Devices</th><th>Passwrod</th><th>Date</th><th>Mail</th></tr>');
                 $table.append($header);
                 $.each(data, function (i, val) {
                     var $row = $('<tr id="row_' + val.username + '"/>').addClass('user-row');
@@ -56,6 +56,7 @@ $(document).ready(function () {
                     $row.append($('<td/>').html('Unassigned'));
                     $row.append($('<td/>').html(val.password));
                     $row.append($('<td/>').html('Unassigned'));
+                    $row.append($('<td/>').html(val.mail));
                     $row.append($('<button/>').addClass('button-del edit-user').attr('id', 'editB' + val.username).html('Edit'));
                     $row.append($('<button/>').addClass('button-del  delete-user').attr('id', 'deleteB' + val.username).html('Delete'));
                     $table.append($row);
@@ -112,6 +113,43 @@ $(document).ready(function () {
         });      
     });
 });  
+
+
+
+$(document).ready(function () {
+
+
+
+    $('#btn-update').click(function () {
+
+        var apiBaseUrl = "http://localhost:55326/";
+        
+        var data = {
+            user_id: $("#r-id").val().trim(),
+            first_name: $("#r-fname").val().trim(),
+            last_name: $("#r-lname").val().trim(),
+            role: $("#r-role").val().trim(),
+            location: $("#r-location").val().trim(),
+            username: $("#r-uname").val().trim(),
+            mail: $("#r-mail").val().trim(),
+            password: $("#r-password").val().trim(),
+
+        }
+
+        $.ajax({
+            url: apiBaseUrl + 'api/Users/Put',
+            type: 'PUT',
+            dataType: 'json',
+            data: data,
+            success: function (d) {
+                alert("Saved Successfully");
+                $("#btn-users-view").click();
+            },
+
+        });
+    });
+});
+
 
 
 $(document).ready(function () {
@@ -310,7 +348,7 @@ $(document).on({
                 $("#r-role").val($tds.eq(2).text());
                 $("#r-location").val($tds.eq(3).text());
                 $("#r-uname").val($tds.eq(4).text());
-                $("#r-mail").val($tds.eq(7).text());
+                $("#r-mail").val($tds.eq(8).text());
                 $("#r-password").val($tds.eq(6).text());
 
             },

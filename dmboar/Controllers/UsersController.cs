@@ -117,7 +117,8 @@ namespace dmboar.Controllers
 
         }
 
-
+        [Route("api/Users/Put")]
+        [HttpPut]
         public IHttpActionResult Put(UserDto userDto)
         {
             if (!ModelState.IsValid)
@@ -125,7 +126,7 @@ namespace dmboar.Controllers
 
             using (DMSEntities dbContext = new DMSEntities())
             {
-                var existingUser = dbContext.users.Where(e => e.user_id == userDto.user_id)
+                var existingUser = dbContext.users.Where(e => e.Mail == userDto.mail)
                                                         .FirstOrDefault<user>();
 
                 if (existingUser != null)
