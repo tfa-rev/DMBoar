@@ -6,7 +6,7 @@
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #8D8741;
+    background-color: grey;
 }
 
 h, h1, h2, h3, h4, h5, h6 {
@@ -225,4 +225,18 @@ tr:hover {
     background-color: #acb7ae;
      
 }
+
+.tab-bar {
+    width: 100%;
+    height: 40px;
+    background-color: #FBEEC1;
+    border-radius: 6px;
+    margin: 2px auto;
+
+}
+    .tab-bar div {
+        margin:auto;
+        min-height: 100%;
+        text-align:center;
+    }
 

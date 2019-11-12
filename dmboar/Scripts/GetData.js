@@ -230,8 +230,8 @@ $(document).ready(function () {
             dataType: 'json',
             data: param,
             success: function (data) {
-                 $(document).prop('title', data.username);
-                $(' h2').text(data.username);
+                $(document).prop('title', data.username);
+                $('#user-name').html(data.first_name);
             },
             error: function (req, status, errorObj) {
 
@@ -299,8 +299,8 @@ $(document).on({
                 $("#user-console").html('');
                 $("#user-editor").html(data);
               
-                $('#btn-register').show();
-                $('#btn-update').hide();
+                 if ( $( "#btn-register" ).length == 0)
+                    $("#action-ru").append('<button id="btn-register" class="classy"> Register </div>');
  
 
             },
@@ -336,8 +336,8 @@ $(document).on({
 
                
                 $("#user-editor").html(data);
-                $('#btn-register').hide();
-                $('#btn-update').show();
+                if ($("#btn-update").length == 0)
+                    $("#action-ru").append('<button id="btn-update" class="classy"> Update </div>');
 
                
                
