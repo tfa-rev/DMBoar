@@ -2,6 +2,14 @@
     var apiBaseUrl = "http://localhost:55326/";
     $('#btn-devices-view').click(function () {
         $("#user-console").show();
+        $("#user-editor").html('');
+
+          $.get(apiBaseUrl +  "Home/Filter/", {}, function (response) {
+            $("#user-editor").html(response);
+           
+
+        });
+
 
         $.ajax({
             url: apiBaseUrl + 'api/Devices',
@@ -351,6 +359,8 @@ $(document).on({
                 $("#r-mail").val($tds.eq(8).text());
                 $("#r-password").val($tds.eq(6).text());
 
+
+
             },
             error: function (req, status, errorObj) {
 
@@ -362,3 +372,23 @@ $(document).on({
     },
    
 }, ".edit-user"); 
+
+$(document).ready(function () {
+
+    $('th').click(function () {
+        var table = $(this).parents('table').eq(0)
+        var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+        this.asc = !this.asc
+        if (!this.asc) { rows = rows.reverse() }
+        for (var i = 0; i < rows.length; i++) { table.append(rows[i]) }
+    })
+    function comparer(index) {
+        return function (a, b) {
+            var valA = getCellValue(a, index), valB = getCellValue(b, index)
+            return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+        }
+    }
+    function getCellValue(row, index) { return $(row).children('td').eq(index).text() }
+
+
+});

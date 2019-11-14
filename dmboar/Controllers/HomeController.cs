@@ -56,6 +56,15 @@ namespace dmboar.Controllers
 
         }
 
+        public ActionResult Filter()
+        {
+
+
+            ViewBag.Title = "Filter";
+            return PartialView("~/Views/Home/Filter.cshtml");
+
+        }
+
         public ActionResult Menu()
         {
             ViewBag.Title = "Menu";
