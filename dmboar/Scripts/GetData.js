@@ -20,7 +20,7 @@
                 var $header = $('<thead/>').html('<tr><th>device_id</th><th>name</th><th>manufacturer</th><th>model</th><th>OS</th><th>OS_version</th><th>CPU</th><th>RAM</th><th>User</th></tr>');
                 $table.append($header);
                 $.each(data, function (i, val) {
-                    var $row = $('<tr/>');
+                    var $row = $('<tr class="device-row" >');
                     $row.append($('<td/>').html(val.device_id));
                     $row.append($('<td/>').html(val.name));
                     $row.append($('<td/>').html(val.manufacturer));
@@ -29,7 +29,10 @@
                     $row.append($('<td/>').html(val.OS_version));
                     $row.append($('<td/>').html(val.CPU));
                     $row.append($('<td/>').html(val.RAM));
-                    $row.append($('<td/>').html('Unassigned'));                   
+                    $row.append($('<td/>').html('Unassigned'));       
+                    $row.append($('<button/>').addClass('button-del assign-device').attr('id', 'assignB' + val.username).html('assign'));
+                    $row.append($('<button/>').addClass('button-del  history-device').attr('id', 'historyB' + val.username).html('history'));
+
                     $table.append($row);
                 });
                 $('#user-console').html($table);
@@ -259,6 +262,15 @@ $(document).on({
         $(this).find('button').hide();
     }
 }, ".user-row"); 
+
+$(document).on({
+    mouseenter: function () {
+        $(this).find('button').show();
+    },
+    mouseleave: function () {
+        $(this).find('button').hide();
+    }
+}, ".device-row"); 
  
  
 
