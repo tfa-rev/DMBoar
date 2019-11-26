@@ -111,19 +111,24 @@ p {
         line-height: 75px;
         font-size: 30px;
     }
- /*table layout*/
+
+        .actions > button:hover{
+            background-color:#ddd;
+
+        }
+/*table layout*/
 table {
-    border: 3px solid #496e50;
-    border-collapse: collapse;
-    border-radius: 3px;
-    text-align: center;
-    margin-left: 5%;
-    border-style: hidden;
-    
-}
+            border: 3px solid #496e50;
+            border-collapse: collapse;
+            border-radius: 3px;
+            text-align: center;
+            width: 100%;
+            border-style: hidden;
+        }
 
   td, th  {
     border: 3px solid grey;
+     
      
 }
     td:hover {
@@ -151,16 +156,7 @@ tr:hover {
    
 }
 
-.user-row{
-
-}
-
-.delete-user{
-
-}
-
-.edit-user {
-}
+ 
 /* index login */
 
 .stack {

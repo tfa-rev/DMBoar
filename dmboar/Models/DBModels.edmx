@@ -22,7 +22,7 @@
           <Key>
             <PropertyRef Name="id_register" />
           </Key>
-          <Property Name="id_register" Type="int" Nullable="false" />
+          <Property Name="id_register" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_device" Type="int" Nullable="false" />
           <Property Name="id_user" Type="int" Nullable="false" />
           <Property Name="start_date" Type="smalldatetime" Nullable="false" />
@@ -42,7 +42,7 @@
           <Property Name="Username" Type="varchar" MaxLength="20" />
           <Property Name="Password" Type="varchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK__register__id_dev__4D94879B">
+        <Association Name="FK__register__id_dev__693CA210">
           <End Role="device" Type="Self.device" Multiplicity="1" />
           <End Role="register" Type="Self.register" Multiplicity="*" />
           <ReferentialConstraint>
@@ -54,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__register__id_use__4E88ABD4">
+        <Association Name="FK__register__id_use__6A30C649">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="register" Type="Self.register" Multiplicity="*" />
           <ReferentialConstraint>
@@ -70,11 +70,11 @@
           <EntitySet Name="device" EntityType="Self.device" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__register__id_dev__4D94879B" Association="Self.FK__register__id_dev__4D94879B">
+          <AssociationSet Name="FK__register__id_dev__693CA210" Association="Self.FK__register__id_dev__693CA210">
             <End Role="device" EntitySet="device" />
             <End Role="register" EntitySet="register" />
           </AssociationSet>
-          <AssociationSet Name="FK__register__id_use__4E88ABD4" Association="Self.FK__register__id_use__4E88ABD4">
+          <AssociationSet Name="FK__register__id_use__6A30C649" Association="Self.FK__register__id_use__6A30C649">
             <End Role="user" EntitySet="user" />
             <End Role="register" EntitySet="register" />
           </AssociationSet>
@@ -96,20 +96,20 @@
           <Property Name="OS_version" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CPU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="RAM" Type="Int32" />
-          <NavigationProperty Name="registers" Relationship="Self.FK__register__id_dev__4D94879B" FromRole="device" ToRole="register" />
+          <NavigationProperty Name="registers" Relationship="Self.FK__register__id_dev__693CA210" FromRole="device" ToRole="register" />
         </EntityType>
         <EntityType Name="register">
           <Key>
             <PropertyRef Name="id_register" />
           </Key>
-          <Property Name="id_register" Type="Int32" Nullable="false" />
+          <Property Name="id_register" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_device" Type="Int32" Nullable="false" />
           <Property Name="id_user" Type="Int32" Nullable="false" />
           <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="end_date" Type="DateTime" Precision="0" />
           <Property Name="permissions" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="device" Relationship="Self.FK__register__id_dev__4D94879B" FromRole="register" ToRole="device" />
-          <NavigationProperty Name="user" Relationship="Self.FK__register__id_use__4E88ABD4" FromRole="register" ToRole="user" />
+          <NavigationProperty Name="device" Relationship="Self.FK__register__id_dev__693CA210" FromRole="register" ToRole="device" />
+          <NavigationProperty Name="user" Relationship="Self.FK__register__id_use__6A30C649" FromRole="register" ToRole="user" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -123,9 +123,9 @@
           <Property Name="Mail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="registers" Relationship="Self.FK__register__id_use__4E88ABD4" FromRole="user" ToRole="register" />
+          <NavigationProperty Name="registers" Relationship="Self.FK__register__id_use__6A30C649" FromRole="user" ToRole="register" />
         </EntityType>
-        <Association Name="FK__register__id_dev__4D94879B">
+        <Association Name="FK__register__id_dev__693CA210">
           <End Role="device" Type="Self.device" Multiplicity="1" />
           <End Role="register" Type="Self.register" Multiplicity="*" />
           <ReferentialConstraint>
@@ -137,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__register__id_use__4E88ABD4">
+        <Association Name="FK__register__id_use__6A30C649">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="register" Type="Self.register" Multiplicity="*" />
           <ReferentialConstraint>
@@ -149,15 +149,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DMSEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DMSEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="devices" EntityType="Self.device" />
           <EntitySet Name="registers" EntityType="Self.register" />
           <EntitySet Name="users" EntityType="Self.user" />
-          <AssociationSet Name="FK__register__id_dev__4D94879B" Association="Self.FK__register__id_dev__4D94879B">
+          <AssociationSet Name="FK__register__id_dev__693CA210" Association="Self.FK__register__id_dev__693CA210">
             <End Role="device" EntitySet="devices" />
             <End Role="register" EntitySet="registers" />
           </AssociationSet>
-          <AssociationSet Name="FK__register__id_use__4E88ABD4" Association="Self.FK__register__id_use__4E88ABD4">
+          <AssociationSet Name="FK__register__id_use__6A30C649" Association="Self.FK__register__id_use__6A30C649">
             <End Role="user" EntitySet="users" />
             <End Role="register" EntitySet="registers" />
           </AssociationSet>
@@ -167,7 +167,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="DMSEntities">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="DMSEntities1">
           <EntitySetMapping Name="devices">
             <EntityTypeMapping TypeName="Models.device">
               <MappingFragment StoreEntitySet="device">

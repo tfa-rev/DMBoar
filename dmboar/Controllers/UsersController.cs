@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using dmboar.Models;
+ 
 
 namespace dmboar.Controllers
 {
@@ -15,7 +16,7 @@ namespace dmboar.Controllers
     {
         public HttpResponseMessage Get()
         {
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 //return dbContext.devices.ToList();
                 var UserList = from x in dbContext.users
@@ -45,7 +46,7 @@ namespace dmboar.Controllers
         [HttpGet]
         public HttpResponseMessage GetById(int user_id)
         {
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 //return dbContext.devices.ToList();
                 var user = dbContext.users.FirstOrDefault(e => e.user_id == user_id);
@@ -83,9 +84,10 @@ namespace dmboar.Controllers
         [HttpGet]
         public HttpResponseMessage Login(string mail, string password)
         {
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
-                //return dbContext.devices.ToList();
+                //var encrypted_Password = BCrypt.Net.BCrypt.HashPassword(password);
+                //var user = dbContext.users.FirstOrDefault(e => e.Mail == mail && e.Password ==  encrypted_Password);
                 var user = dbContext.users.FirstOrDefault(e => e.Mail == mail && e.Password == password);
                 HttpResponseMessage response;
 
@@ -124,7 +126,7 @@ namespace dmboar.Controllers
             if (!ModelState.IsValid)
                 return BadRequest("Not a valid model");
 
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 var existingUser = dbContext.users.Where(e => e.Mail == userDto.mail)
                                                         .FirstOrDefault<user>();
@@ -137,7 +139,8 @@ namespace dmboar.Controllers
                     if (userDto.location != null) existingUser.location = userDto.location;
                     if (userDto.username != null) existingUser.Username = userDto.username;
                     if (userDto.mail != null) existingUser.Mail = userDto.mail;
-                    if (userDto.password != null) existingUser.Password = userDto.password;                          
+                    //if (userDto.password != null) existingUser.Password = BCrypt.Net.BCrypt.HashPassword( userDto.password);    
+                    if (userDto.password != null) existingUser.Password =  userDto.password ;
 
                     dbContext.SaveChanges();
                 }
@@ -157,7 +160,7 @@ namespace dmboar.Controllers
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
 
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 dbContext.users.Add(new user()
                 {
@@ -169,7 +172,8 @@ namespace dmboar.Controllers
                     location = user.role,
                     Username = user.username,
                     Mail = user.mail,
-                    Password = user.password,
+                    //Password = BCrypt.Net.BCrypt.HashPassword(user.password),
+                    Password =  user.password ,
                 });
 
                 
@@ -189,7 +193,7 @@ namespace dmboar.Controllers
             if (username == null)
                 return BadRequest("Not a valid student id");
 
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 var student = dbContext.users
                     .Where(s => s.Username == username)

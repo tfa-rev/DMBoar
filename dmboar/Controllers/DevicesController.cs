@@ -16,7 +16,7 @@ namespace dmboar.Controllers
     {
         public HttpResponseMessage Get()
         {
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 //return dbContext.devices.ToList();
                 var DeviceList = from x in dbContext.devices
@@ -44,7 +44,7 @@ namespace dmboar.Controllers
 
         public HttpResponseMessage GetByName(string name)
         {
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 //return dbContext.devices.ToList();
                 var Device = from x in dbContext.devices
@@ -75,7 +75,7 @@ namespace dmboar.Controllers
         public async Task<IHttpActionResult> PostDevice(device device)
         {
 
-            using (DMSEntities dbContext = new DMSEntities())
+            using (DMSEntities1 dbContext = new DMSEntities1())
             {
                 if (!ModelState.IsValid)
                 {

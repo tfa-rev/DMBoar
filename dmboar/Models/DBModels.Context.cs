@@ -13,10 +13,10 @@ namespace dmboar.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DMSEntities : DbContext
+    public partial class DMSEntities1 : DbContext
     {
-        public DMSEntities()
-            : base("name=DMSEntities")
+        public DMSEntities1()
+            : base("name=DMSEntities1")
         {
         }
     

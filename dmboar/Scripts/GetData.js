@@ -16,6 +16,7 @@
             type: 'GET',
             dataType: 'json',
             success: function (data) {
+                
                 var $table = $('<table/>').addClass('dataTable table table-bordered table-striped');
                 var $header = $('<thead/>').html('<tr><th>device_id</th><th>name</th><th>manufacturer</th><th>model</th><th>OS</th><th>OS_version</th><th>CPU</th><th>RAM</th><th>User</th></tr>');
                 $table.append($header);
@@ -30,7 +31,7 @@
                     $row.append($('<td/>').html(val.CPU));
                     $row.append($('<td/>').html(val.RAM));
                     $row.append($('<td/>').html('Unassigned'));       
-                    $row.append($('<button/>').addClass('button-del assign-device').attr('id', 'assignB' + val.username).html('assign'));
+                    $row.append($('<button/>').addClass('button-del assign-device').attr('id', 'assignB' + $('#user-name').text()).html('assign'));
                     $row.append($('<button/>').addClass('button-del  history-device').attr('id', 'historyB' + val.username).html('history'));
 
                     $table.append($row);
@@ -242,7 +243,7 @@ $(document).ready(function () {
             data: param,
             success: function (data) {
                 $(document).prop('title', data.username);
-                $('#user-name').html(data.first_name);
+                $('#user-name').html(data.username);
             },
             error: function (req, status, errorObj) {
 
@@ -404,3 +405,54 @@ $(document).ready(function () {
 
 
 });
+
+
+
+$(document).on({
+    click: function () {
+
+
+        var tmp = $(this).attr('id');
+        var username = tmp.replace('assignB', '');
+     
+
+       
+        var device_txt = $(this).closest('tr').children('td:first').text();
+        var device_id = parseInt(device_txt, 10);
+
+        var apiBaseUrl = "http://localhost:55326/";
+        var data = { "device_id": device_id, "username": username };
+        $('#user-editor').html('selected ' + username + ' with the id ' + device_id);
+
+        //disable button to prevent multiple calls
+        $(this).attr('disabled', true);
+
+        $.when(
+            $.ajax({
+
+                type: "POST",
+                data: JSON.stringify(data),
+                url: apiBaseUrl + 'api/Register/PostAssign',
+                contentType: "application/json",
+
+                success: function (d) {
+                    alert("Saved Successfully");
+
+                    $("#btn-devices-view").click();
+
+                },
+
+            })
+        ).then(function (a) {
+            // a1 and a2 are arguments resolved for the page1 and page2 ajax requests, respectively.
+            // Each argument is an array with the following structure: [ data, statusText, jqXHR ]
+
+            alert("We got what we came for!");
+
+        });
+       
+
+
+    },
+
+}, ".assign-device"); 
