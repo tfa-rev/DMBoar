@@ -442,12 +442,26 @@ $(document).on({
 
                 },
 
+            }),
+            $.ajax({
+
+                type: "POST",
+                data: JSON.stringify(data),
+                url: apiBaseUrl + 'api/Register/PostAssign',
+                contentType: "application/json",
+
+                success: function (d) {
+                    alert("Saved Successfully");
+
+                    $("#btn-devices-view").click();
+
+                },
+
             })
         ).then(function (a) {
-            // a1 and a2 are arguments resolved for the page1 and page2 ajax requests, respectively.
-            // Each argument is an array with the following structure: [ data, statusText, jqXHR ]
+          
 
-            alert("We got what we came for!");
+             
 
         });
        
@@ -456,3 +470,44 @@ $(document).on({
     },
 
 }, ".assign-device"); 
+
+$(document).ready(function () {
+    var apiBaseUrl = "http://localhost:55326/";
+
+
+    $('#btn-users-history').click(function () {
+
+        $("#user-console").show();
+        $("#user-editor").html('h');
+
+
+
+
+        $.ajax({
+            url: apiBaseUrl + 'api/Register/GetByDeviceId?device_id=1',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                var $table = $('<table/>').addClass('dataTable table table-bordered table-striped');
+                var $header = $('<thead/>').html('<tr><th>device id</th><th>start date</th><th>end date</th></tr>');
+                $table.append($header);
+                $.each(data, function (i, val) {
+                    var $row = $('<tr class="device-row" >');
+                    $row.append($('<td/>').html(val.device_id));
+                    $row.append($('<td/>').html(val.startTime));
+                    $row.append($('<td/>').html(val.endTime));
+
+                    $table.append($row);
+                });
+                $('#user-console').html($table);
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+    });
+
+        
+});
+

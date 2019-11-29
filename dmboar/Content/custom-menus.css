@@ -135,6 +135,8 @@ table {
         border: 4px solid black;
     }
 
+   
+
 tr:hover {
     background-color: #ddd;
 }

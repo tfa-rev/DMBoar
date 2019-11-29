@@ -14,6 +14,31 @@ namespace dmboar.Controllers
     public class RegisterController : ApiController
     {
 
+        public HttpResponseMessage GetByDeviceId(int device_id)
+        {
+            using (DMSEntities1 dbContext = new DMSEntities1())
+            {
+
+
+                var DeviceList = from x in dbContext.registers
+                                 select new RegisterDto()
+                                 {
+                                     device_id = device_id,
+                                     startTime = x.start_date,
+                                     endTime = (DateTime)x.end_date
+                                 };
+
+                HttpResponseMessage response;
+                response = Request.CreateResponse(HttpStatusCode.OK, DeviceList.ToList());
+                return response;
+
+            }
+
+
+        }
+
+
+
         public class AssignInfo
         {
             public int device_id { set; get; }

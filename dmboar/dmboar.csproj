@@ -197,6 +197,7 @@
     <Compile Include="Models\register.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterDto.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>

@@ -41,6 +41,7 @@ namespace dmboar.Controllers
 
         }
 
+ 
 
         public HttpResponseMessage GetByName(string name)
         {
@@ -85,8 +86,7 @@ namespace dmboar.Controllers
                 dbContext.devices.Add(device);
                 await dbContext.SaveChangesAsync();
 
-                // New code:
-                // Load author name
+              
                 
 
                 var dto = new DeviceDto()
@@ -104,6 +104,8 @@ namespace dmboar.Controllers
                 return CreatedAtRoute("DefaultApi", new { id = device.device_id }, dto);
             }
         }
+
+    
     }
 
     

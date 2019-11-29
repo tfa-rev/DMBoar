@@ -7,11 +7,11 @@ namespace dmboar.Models
 {
     public class RegisterDto
     {
-     
-        public string username { get; set; }
+
+
         public int device_id { get; set; }
         public DateTime startTime { get; set; }
-        public int days { get; set; }
+        public DateTime endTime { get; set; }
 
     }
 }
